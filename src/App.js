@@ -42,7 +42,7 @@ const App = () => {
         );
       })}
       <br />
-
+      <p>New data</p>
       {newdata &&
         newdata.map((data, index) => {
           return (
