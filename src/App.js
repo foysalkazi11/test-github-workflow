@@ -29,7 +29,6 @@ const App = () => {
     if (!newdata.includes(e.target.textContent)) {
       newdata.push(e.target.textContent);
     }
-    console.log(newdata);
   };
 
   return (
@@ -43,7 +42,7 @@ const App = () => {
       })}
       <br />
       <p>New data</p>
-<p>New data again</p>
+      <p>New data again</p>
       {newdata &&
         newdata.map((data, index) => {
           return (
