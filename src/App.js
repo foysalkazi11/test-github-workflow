@@ -43,6 +43,7 @@ const App = () => {
       })}
       <br />
       <p>New data</p>
+<p>New data again</p>
       {newdata &&
         newdata.map((data, index) => {
           return (
