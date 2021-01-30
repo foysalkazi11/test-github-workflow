@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
 
-function App() {
+const mockAxiosCall = () => {
+  return {
+    fundIdentifierText: "Interview Fund",
+    shareClassArray: [
+      {
+        legalName: "share class A",
+        currency: "euro"
+      },
+      {
+        legalName: "share class B",
+        currency: "dollar"
+      }
+    ]
+  };
+};
+
+const App = () => {
+  const [fatchData, setFatchData] = useState([]);
+  const [newdata, setNewdata] = useState([]);
+
+  useEffect(() => {
+    const response = mockAxiosCall();
+    setFatchData(response.shareClassArray);
+  }, []);
+
+  const handleClick = (e) => {
+    if (!newdata.includes(e.target.textContent)) {
+      newdata.push(e.target.textContent);
+    }
+    console.log(newdata);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ul>
+      {fatchData.map((data, index) => {
+        return (
+          <li onClick={handleClick} key={index}>
+            {data.legalName}
+          </li>
+        );
+      })}
+      <br />
+
+      {newdata &&
+        newdata.map((data, index) => {
+          return (
+            <li onClick={handleClick} key={index}>
+              {data}
+            </li>
+          );
+        })}
+    </ul>
   );
-}
+};
 
 export default App;
